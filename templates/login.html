@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/login/style.css') }}">
+    <title>Login</title>
+
+    <script type="text/javascript">
+        // Function to get a specific cookie by name
+        function getCookie(name) {
+            let nameEQ = name + "=";
+            let cookiesArray = document.cookie.split(';');
+            for (let i = 0; i < cookiesArray.length; i++) {
+                let cookie = cookiesArray[i].trim();
+                if (cookie.indexOf(nameEQ) === 0) {
+                    return cookie.substring(nameEQ.length, cookie.length);
+                }
+            }
+            return null;
+        }
+
+        // onload function to check for session cookie and redirect accordingly
+        window.onload = function() {
+            const sessionCookie = getCookie("Bulk_Session_ID"); // Replace with your session cookie name
+
+            if (sessionCookie) {
+                console.log("Session cookie found, redirecting to dashboard...");
+                window.location.href = "/dashboard"; // Redirect to the dashboard if session exists
+            } else {
+                console.log("No session cookie, staying on login page...");
+                window.location.href = "/login"; // Redirect to login if no session
+            }
+        };
+
+        // Execute when the DOM content is fully loaded (for form handling)
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM fully loaded and parsed");
+
+            // Get the login button element
+            const loginButton = document.getElementById("loginButton");
+
+            // Add a click event listener to the login button
+            loginButton.addEventListener("click", function (event) {
+                event.preventDefault(); // Prevent the default form submission
+                console.log("Login button clicked");
+
+                // Get email and password values from input fields
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+
+                // Submit form data via POST to the Flask server
+                document.getElementById("loginForm").submit();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="login_wrapper">
+        <div class="login_form">
+            <span class="span"><h2>Login</h2></span>
+            <form id="loginForm" action="/login" method="POST">
+                <input type="email" name="email" id="email" placeholder="Enter Your Email" required>
+                <input type="password" name="password" id="password" placeholder="Enter Your Password" required>
+                <center>
+                    <button id="loginButton">
+                    <span class="login-text">Login</span>
+                </button>
+                </center>
+            </form>
+            <span><a href="./signup">I don't have an account</a></span>
+        </div>
+    </div>
+</body>
+</html>

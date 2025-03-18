@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/card.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/templates.css') }}">
+    <title>Message Templates</title>
+</head>
+<body>
+    <div class="container">
+        <div class="nav_bar">
+            <ul>
+                <a href="{{ url_for('dashboard') }}"><li>Dashboard</li></a>
+                <a href="{{ url_for('details') }}"><li>Details</li></a>
+                <a href="{{ url_for('templates') }}"><li class="active">Message Templates</li></a>
+                <a href="{{ url_for('sending') }}"><li>Message Sending</li></a>
+            </ul>
+        </div>
+        <div class="main_body">
+
+            <div class="custom_Templates">
+                <form method="POST" action="{{ url_for('templates') }}">
+                    <textarea id="templateText" name="templateText" rows="4" required placeholder="Enter your Custom Message Template"></textarea>
+                    <button type="submit">Add Template</button>
+                </form>
+            </div>
+
+            <section class="templatecontainer">
+                <h2>Available Templates</h2>
+                <div class="cards-wrapper">
+                    <div class="cards">
+                        {% for template in templatesDB %}
+                            <div class="card">
+                                {% if template['templateTypes'] == "user_design" %}
+                                    <span class="custom">Custom</span>
+                                {% else %}
+                                    <span class="prebuild">Pre Built</span>
+                                {% endif %}
+                                <p onclick="copyCardText(this)">{{ template['template'] }}</p>
+                                {% if template['templateTypes'] == "user_design" %}
+                                <form action="{{ url_for('delete_template', template_id=template['_id']) }}" method="post" style="display:inline;">
+                                    <button type="submit" class="delete-btn">Delete</button>
+                                </form>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        function copyCardText(element) {
+            const text = element.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Card text copied: " + text);
+            }).catch(err => {
+                console.error('Error copying text: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+.main_body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+.cards-wrapper
+{
+    margin-top: 30px;
+}
+.custom_Templates {
+    width: 60%;
+    height: 30vh;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.custom_Templates h2 {
+    margin-bottom: 30px;
+}
+
+.custom_Templates label {
+    display: block;
+    margin: 5px 0;
+}
+
+.custom_Templates input,
+.custom_Templates textarea {
+    min-width: 600px;
+    max-width: 600px;
+    min-height: 60px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+.custom_Templates button {
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: rgb(51, 2, 117);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.custom_Templates button:hover {
+    background-color: rgb(111, 44, 198);
+}
+
+form {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.custom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+
+.delete-btn {
+    padding: 5px 10px;
+    background-color: rgb(221, 75, 57);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.delete-btn:hover {
+    background-color: rgb(192, 36, 30);
+}
+
+.custom p {
+    flex: 1;
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}

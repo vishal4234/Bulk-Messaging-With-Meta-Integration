@@ -1,0 +1,226 @@
+.edit_info {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.67); /* Slightly transparent red for better visibility */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.edit_info h2
+
+{
+    color: whitesmoke;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.edit_info form {
+    background: rebeccapurple;
+    width: 500px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    text-align: center;
+    padding: 10px;
+    color: rgb(52, 2, 117);
+}
+
+th {
+    color: white;
+}
+
+thead {
+    background-color: rgb(51, 2, 117);
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgba(52, 2, 117, 0.268);
+}
+
+tbody tr:nth-child(odd) {
+    background-color: rgba(52, 2, 117, 0.568);
+}
+
+.delete-btn {
+    color: white;
+    background-color: red;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.delete-btn:hover {
+    background-color: rgba(255, 0, 0, 0.63);
+}
+
+.edit-btn {
+    color: white;
+    background-color: dodgerblue;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.edit-btn:hover {
+    background-color: #5eafff;
+}
+
+.table_main {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background-color: #f0f4f8;
+}
+
+.add_details {
+    min-height: 45vh;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+form {
+    padding: 20px;
+    border-radius: 8px;
+    width: 900px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+input[type="text"] {
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    flex: 1;
+    padding-left: 10px;
+}
+
+input[type="submit"] {
+    padding: 10px 30px;
+    background-color: rgb(51, 2, 117);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(111, 44, 198);
+}
+
+.file-upload {
+    position: relative;
+    display: inline-block;
+    width: 300px;
+    height: 100px;
+}
+
+input[type="file"] {
+    width: 100px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px;
+    background-color: rgb(51, 2, 117);
+    color: white;
+    border: 1px solid rgb(111, 44, 198);
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.custom-file-upload:hover {
+    background-color: rgb(111, 44, 198);
+}
+
+.file-name {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    form {
+        flex-direction: column; /* Stack elements vertically */
+        width: 90%; /* Adjust width for smaller screens */
+    }
+
+    input[type="submit"] {
+        width: 100%;
+    }
+
+    .file-upload {
+        width: 100%;
+        height: auto;
+    }
+
+    .custom-file-upload {
+        width: 100%;
+    }
+}
+
+#update_name, #update_surname, #update_phone {
+    width: 80%;
+    height: 40px; /* Reduced height for better alignment */
+    padding: 5px; /* Added padding */
+    border-radius: 4px; /* Consistent rounded corners */
+    border: 1px solid #ccc; /* Border styling */
+}
+
+.cancel
+{
+    margin-top: 20px;
+    background: #ff4242;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10px;
+    color: whitesmoke;
+}

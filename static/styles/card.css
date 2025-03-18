@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+h6 {
+    margin: 20px 0;
+    color: #888;
+    font-size: 16px;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-between; /* Adjusted to space-between for better distribution */
+    flex-wrap: wrap; /* Allow wrapping to the next row */
+    margin-bottom: 20px;
+    gap: 15px; /* Space between cards */
+}
+
+.card {
+    flex: 1 1 calc(20% - 15px); /* 20% width minus gap */
+    height: auto; /* Allow height to adjust based on content */
+    padding: 20px 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    text-align: start;
+    flex-direction: column;
+    font-size: 15px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, border 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.card span
+{
+    top: 0;
+    padding: 5px 20px;
+    border-radius: 5px;
+    color:white;
+}
+
+.custom
+{
+    background: rgba(0, 166, 255, 0.91);
+}
+.prebuild
+{
+    background: rgba(255, 0, 81, 0.907);
+}
+.card p
+{
+    margin-top: 10px;
+}
+.card:hover {
+    background-color: rgba(51, 2, 117, 0.1);
+}
+
+.templatecontainer {
+    width: 80%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+.cards-wrapper {
+    overflow-y: auto;
+    max-height: 800px; /* Adjust height based on your design */
+    width: 100%;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.cards-wrapper::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex: 1 1 calc(50% - 15px); /* 2 cards on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        flex: 1 1 calc(100% - 15px); /* 1 card on very small screens */
+    }
+}

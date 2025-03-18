@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/table.css') }}">
+    <title>User Details</title>
+</head>
+<body>
+
+    <div class="edit_info" id="edit-info" style="display:none;">
+        <form action="{{ url_for('update_info') }}" method="post" id="update-form">
+            <h2>Edit User Info</h2>
+            <input type="text" id="update_name" name="name" placeholder="Enter the First Name" required><br>
+            <input type="text" id="update_surname" name="surname" placeholder="Enter the Last Name" required><br>
+            <input type="text" id="update_phone" name="phone" placeholder="Enter the Phone Number" required><br>
+            <input type="hidden" id="user_id" name="user_id"><!-- Hidden field for user ID -->
+            <input type="submit" value="Submit">
+            <button class="cancel" type="button" onclick="hideEditInfo()">Cancel</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <div class="nav_bar">
+            <ul>
+                <a href="{{ url_for('dashboard') }}"><li>Dashboard</li></a>
+                <a href="{{ url_for('details') }}"><li class="active">Details</li></a>
+                <a href="{{ url_for('templates') }}"><li>Message Templates</li></a>
+                <a href="{{ url_for('sending') }}"><li>Message Sending</li></a>
+            </ul>
+        </div>
+
+        <div class="main_body table_main">
+            <div class="add_details">
+                <div class="input_number">
+                    <!-- Form for manual user input -->
+                    <form method="POST" enctype="multipart/form-data">
+                        <input type="text" id="name" name="name" required placeholder="Enter the First Name"><br>
+                        <input type="text" id="surname" name="surname" required placeholder="Enter the Last Name"><br>
+                        <input type="text" id="phone" name="phone" required placeholder="Enter the Phone Number"><br>
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+
+                <span>OR</span>
+
+                <div class="input_file">
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="file-upload">
+                            <label class="custom-file-upload" for="contact">Choose File</label>
+                            <input type="file" name="file" id="contact" onchange="updateFileName()" required>
+                            <div class="file-name" id="file-name">No file chosen</div><br>
+                            <input type="submit" value="Submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Phone</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in mongoDBuser %}
+                    <tr>
+                        <td>{{ user['_id'] }}</td>
+                        <td>{{ user['name'] }}</td>
+                        <td>{{ user['surname'] }}</td>
+                        <td>{{ user['phone'] }}</td>
+                        <td>
+                            <form action="{{ url_for('delete_info', user_id=user['_id']) }}" method="post" style="display:inline;">
+                                <button type="submit" class="delete-btn">Delete</button>
+                            </form>
+                            <button class="edit-btn" onclick="showEditInfo('{{ user['_id'] }}', '{{ user['name'] }}', '{{ user['surname'] }}', '{{ user['phone'] }}')">Edit</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function updateFileName() {
+            const input = document.getElementById('contact');
+            const fileName = input.files[0].name;
+            document.getElementById('file-name').innerText = fileName;
+        }
+
+        function showEditInfo(userId, name, surname, phone) {
+            // Set values to the form fields
+            document.getElementById('user_id').value = userId;
+            document.getElementById('update_name').value = name;
+            document.getElementById('update_surname').value = surname;
+            document.getElementById('update_phone').value = phone;
+
+            // Show the edit info section
+            document.getElementById('edit-info').style.display = 'flex';
+        }
+
+        function hideEditInfo() {
+            // Hide the edit info section
+            document.getElementById('edit-info').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

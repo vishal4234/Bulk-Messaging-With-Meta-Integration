@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='styles/message.css') }}">
+    
+    <title>Starting Sending</title>
+</head>
+<body>
+    <div class="container">
+        <div class="nav_bar">
+            <ul>
+                <a href="{{ url_for('dashboard') }}"><li>Dashboard</li></a>
+                <a href="{{ url_for('details') }}"><li>Details</li></a>
+                <a href="{{ url_for('templates') }}"><li>Message Templates</li></a>
+                <a href="{{ url_for('sending') }}"><li class="active">Message sending</li></a>
+            </ul>
+        </div>
+        <div class="main_body">
+            <div class="form-container">
+               <form action="{{ url_for('add_dashboard_user_data') }}" method="post">
+                    <textarea id="message" placeholder="Type your message here..."  name="message"></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

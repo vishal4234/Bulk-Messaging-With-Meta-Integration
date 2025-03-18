@@ -1,0 +1,50 @@
+.main_body
+{
+    width: 85%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.form-container {
+
+    width: 70%;
+    /* max-width: 600px; Optional max width for large screens */
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+textarea {
+    
+    min-width: 97%;
+    min-height: 50vh;
+    max-width: 97%;
+    max-height: 50vh;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 20px;
+    /* box-sizing: border-box; Ensures padding doesn't affect width */
+}
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(51, 2, 117);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+button:hover {
+    background-color: rgb(99, 35, 183)
+}
+
+.main_body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
